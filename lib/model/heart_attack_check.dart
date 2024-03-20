@@ -1,19 +1,19 @@
 // heart_attack_model.dart
 
 class HeartAttackData {
-  String age;
-  String sex;
-  String chestPainType;
-  String restingBloodPressure;
-  String serumCholestoral;
-  String fastingBloodPressure;
-  String restingElectrocardiographicResults;
-  String maxHeartRateAchieved;
-  String exerciseInducedAngina;
-  String oldPeak;
-  String slopeOfPeakExerciseSTSegme;
-  String numberOfMajorVessels;
-  String thalValue;
+  final String age;
+  final  String sex;
+  final String chestPainType;
+  final String restingBloodPressure;
+  final String serumCholestoral;
+  final String fastingBloodPressure;
+  final String restingElectrocardiographicResults;
+  final String maxHeartRateAchieved;
+  final String exerciseInducedAngina;
+  final String oldPeak;
+  final String slopeOfPeakExerciseSTSegme;
+  final String numberOfMajorVessels;
+  final String thalValue;
 
   HeartAttackData({
     required this.age,
@@ -35,17 +35,17 @@ class HeartAttackData {
     return {
       'age': age,
       'sex': sex,
-      'chestPainType': chestPainType,
-      'restingBloodPressure': restingBloodPressure,
-      'serumCholestoral': serumCholestoral,
-      'fastingBloodPressure': fastingBloodPressure,
-      'restingElectrocardiographicResults': restingElectrocardiographicResults,
-      'maxHeartRateAchieved': maxHeartRateAchieved,
-      'exerciseInducedAngina': exerciseInducedAngina,
-      'oldPeak': oldPeak,
-      'slopeOfPeakExerciseSTSegme': slopeOfPeakExerciseSTSegme,
-      'numberOfMajorVessels': numberOfMajorVessels,
-      'thalValue': thalValue,
+      'cp': chestPainType,
+      'trestbps': restingBloodPressure,
+      'chol': serumCholestoral,
+      'fbs': fastingBloodPressure,
+      'restecg': restingElectrocardiographicResults,
+      'thalach': maxHeartRateAchieved,
+      'exang': exerciseInducedAngina,
+      'oldpeak': oldPeak,
+      'slope': slopeOfPeakExerciseSTSegme,
+      'ca': numberOfMajorVessels,
+      'thal': thalValue,
     };
   }
 }

@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gdcs_hackathon/model/heart_attack_check.dart';
+import 'package:gdcs_hackathon/model/repo/heart_attack_repo.dart';
 import 'package:gdcs_hackathon/widget/custom_button.dart';
 import 'package:gdcs_hackathon/widget/custom_text_form_field.dart';
 
@@ -48,8 +50,8 @@ class HeartAttackCheckView extends StatelessWidget {
             padding: EdgeInsets.all(25.0.w),
             child: Column(
               children: [
-                CustomTextFormField(title: "Enter the Age", controller: viewModel.ageController),
                 CustomTextFormField(title: "Enter the Sex", controller: viewModel.sexController),
+                CustomTextFormField(title: "Enter the Age", controller: viewModel.ageController),
                 CustomTextFormField(title: "Enter the chest pain type", controller: viewModel.chestPainTypeController),
                 CustomTextFormField(title: "Enter the resting blood pressure", controller: viewModel.restingBloodPressureController),
                 CustomTextFormField(title: "Enter the serum cholestoral in mg/dl", controller: viewModel.serumCholestoralController),
@@ -62,12 +64,22 @@ class HeartAttackCheckView extends StatelessWidget {
                 CustomTextFormField(title: "Enter number of major vessels  ", controller: viewModel.numberOfMajorVesselsController),
                 CustomTextFormField(title: "Enter the thal value ", controller: viewModel.thalValueController),
                 SizedBox(height: 25.h),
-                Text(
-                  'The result',
-                  style: TextStyle(
-                    fontSize: 24.sp,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.grey,
+                InkWell(
+                  onTap: ()=>showDialog(context: context, builder: (context)=>
+                  AlertDialog(
+                    title: Text("OOps we  have checked your Data "),
+                    actions: [
+                      Text("You are sick and at risk of having a heart attack. You should visit your doctor"),
+                    ],
+                  ),
+                  ),
+                  child: Text(
+                    'The result',
+                    style: TextStyle(
+                      fontSize: 24.sp,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.grey,
+                    ),
                   ),
                 ),
                 SizedBox(height: 25.h),
@@ -75,6 +87,24 @@ class HeartAttackCheckView extends StatelessWidget {
                   text: "Check",
                   onPressed: () {
                     cubit.updateData(viewModel.getData());
+                    ApiService a =ApiService();
+                    a.sendDataToApi(
+                        HeartAttackData(
+                        age: viewModel.ageController.text,
+                        sex: viewModel.sexController.text,
+                        chestPainType: viewModel.chestPainTypeController.text,
+                        restingBloodPressure: viewModel.restingBloodPressureController.text,
+                        serumCholestoral: viewModel.serumCholestoralController.text,
+                        fastingBloodPressure: viewModel.fastingBloodPressureController.text,
+                        restingElectrocardiographicResults: viewModel.restingBloodPressureController.text,
+                        maxHeartRateAchieved: viewModel.maxHeartRateAchievedController.text,
+                        exerciseInducedAngina: viewModel.exerciseInducedAnginaController.text,
+                        oldPeak: viewModel.oldPeakController.text,
+                        slopeOfPeakExerciseSTSegme: viewModel.slopeOfPeakExerciseSTSegmeController.text,
+                        numberOfMajorVessels: viewModel.numberOfMajorVesselsController.text,
+                        thalValue: viewModel.thalValueController.text,
+
+                    ), 7);
                   },
                 ),
               ],

@@ -6,10 +6,7 @@ import '../model/sign_up_model.dart';
 class SignUpViewModel extends ChangeNotifier {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController = TextEditingController();
+
 
   bool isTimeDilationChecked = false;
   bool termsAccepted = false;
@@ -60,23 +57,22 @@ class SignUpViewModel extends ChangeNotifier {
   bool validateForm() {
     return formKey.currentState!.validate();
   }
+  final nameController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
 
-  Future<void> handleSubmit() async {
-    final name = nameController.text;
-    final email = emailController.text;
+
+
+  void handleSubmit()  {
+    final name=nameController.text;
+    final email=emailController.text;
     final password=passwordController.text;
-
     final userData = UserData(fullName: name, email: email , password: password);
 
-    final userRepository = UserRepository(); // Create an instance of UserRepository
+    final userRepository = UserRepositoryRegister();
 
-    userRepository.postData(userData)
-        .then((_) {
-          print('Create Account has been success');
-    })
-        .catchError((error) {
-      print(error.toString());
-    });
+    userRepository.postData(userData);
 
 
   }

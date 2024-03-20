@@ -6,9 +6,13 @@ import 'dart:convert';
 
 
 class ApiService {
-  static Future<void> sendDataToApi(HeartAttackData data) async {
-    final url = 'https://remotepatient.onrender.com/api/sendData/:id'; // Update with your API endpoint
+   Future<bool> sendDataToApi(HeartAttackData data , int id) async {
+     print(data.age);
+     print(data.chestPainType);
+    final url = 'https://remotepatient.onrender.com/api/sendData/7'; // Update with your API endpoint
     final response = await http.post(Uri.parse(url), body: data.toJson());
+     final responseData = json.decode(response.body);
+     print(responseData);
     if (response.statusCode == 200) {
       // Data sent successfully
       print('Data sent successfully');
@@ -16,5 +20,6 @@ class ApiService {
       // Error occurred while sending data
       print('Error occurred while sending data');
     }
+    return true;
   }
 }

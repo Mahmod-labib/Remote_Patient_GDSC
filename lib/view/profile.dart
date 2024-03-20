@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gdcs_hackathon/view/home.dart';
+import 'package:gdcs_hackathon/view/splash_screen.dart';
 import 'package:gdcs_hackathon/widget/custom_button.dart';
 
 class Profile extends StatelessWidget {
@@ -13,74 +14,68 @@ class Profile extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Stack(
-            children: [
-              Container(
-                width: double.infinity,
-                height: 190,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(50.r),
-                    bottomRight: Radius.circular(50.r),
-                  ),
-                  color: const Color(0xffF8C0C8),
-                ),
-                child: Column(
+          Container(
+            width: double.infinity,
+            height: 190.h,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(50.r),
+                bottomRight: Radius.circular(50.r),
+              ),
+              color: const Color(0xffF8C0C8),
+            ),
+            child: Column(
+              children: [
+                SizedBox(height: 5.h,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        IconButton(
-                          onPressed: () => Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Home()),
-                          ),
-                          icon: const Icon(Icons.arrow_back_ios),
-                          color: const Color(0xffFFFFFF),
-                        ),
-                        SizedBox(width: 111.w),
-                        Text(
-                          'Profile',
-                          style: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w700,
-                            color: const Color(0xffFFFFFF),
-                            fontFamily: "Inter",
-                          ),
-                        ),
-                      ],
-                    ),
-                    Positioned(
-                      bottom: -100.h,
-                      child: CircleAvatar(
-                        backgroundImage:
-                            AssetImage("assets/images/Ellipse 4.png"),
-                        radius: 35.r,
+                    IconButton(
+                      onPressed: () => Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Home()),
                       ),
+                      icon: const Icon(Icons.arrow_back_ios),
+                      color: const Color(0xffFFFFFF),
                     ),
+                    SizedBox(width: 111.w),
                     Text(
-                      "Mayada Elsayed",
+                      'Profile',
                       style: TextStyle(
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.w500,
-                        color: const Color(0xff000000),
-                        fontFamily: "Inter",
-                      ),
-                    ),
-                    Text(
-                      "mayada@gmail.com",
-                      style: TextStyle(
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w400,
-                        color: const Color(0xff000000),
+                        fontSize: 22,
+                        fontWeight: FontWeight.w700,
+                        color: const Color(0xffFFFFFF),
                         fontFamily: "Inter",
                       ),
                     ),
                   ],
                 ),
-              ),
-            ],
+                CircleAvatar(
+                  backgroundImage:
+                      AssetImage("assets/images/Ellipse 4.png"),
+                  radius: 35.r,
+                ),
+                Text(
+                  "Mayada Elsayed",
+                  style: TextStyle(
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.w500,
+                    color: const Color(0xff000000),
+                    fontFamily: "Inter",
+                  ),
+                ),
+                Text(
+                  "mayada@gmail.com",
+                  style: TextStyle(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w400,
+                    color: const Color(0xff000000),
+                    fontFamily: "Inter",
+                  ),
+                ),
+              ],
+            ),
           ),
           SizedBox(
             height: 30.h,
@@ -158,7 +153,10 @@ class Profile extends StatelessWidget {
           SizedBox(
             height: 60.h,
           ),
-          CustomButton(text: "LogOut", onPressed: () {}),
+          CustomButton(text: "LogOut", onPressed: () {
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>SplashScreen()));
+
+          }),
         ],
       ),
     );

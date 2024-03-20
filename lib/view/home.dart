@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:gdcs_hackathon/view/heartAttack_Uploader.dart';
 import 'package:gdcs_hackathon/view/heart_attack_risk_checker.dart';
 import 'package:gdcs_hackathon/view/symptom_input.dart';
 import 'package:gdcs_hackathon/viewModel/heart_attack_view_model.dart';
@@ -106,7 +107,28 @@ class Home extends StatelessWidget {
               ),
           ListTile(
             trailing: InkWell(
-                onTap: ()=>Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> HeartAttackCheckView(viewModel:HeartAttackCheckViewModel() , cubit: HeartAttackCheckCubit()))),
+                onTap: ()=>Navigator.pushReplacement(
+                    context, MaterialPageRoute(
+                    builder: (context)=> HeartAttackCheckView(
+                        viewModel:HeartAttackCheckViewModel() ,
+                        cubit: HeartAttackCheckCubit()))),
+                child: SvgPicture.asset("assets/images/Vector (1).svg" , width: 27.w ,height: 31.h,)),
+            title:  Text(
+              "Assess Your Heart Attack Risk",
+              style: TextStyle(
+                fontSize: 18.sp,
+                fontWeight: FontWeight.w500,
+                color: const Color(0xff000000),
+                fontFamily: "Inter",
+              ),
+            ),
+          ),
+          SizedBox(height: 4.h,),
+         /* ListTile(
+            trailing: InkWell(
+                onTap: ()=>Navigator.pushReplacement(
+                    context, MaterialPageRoute(
+                    builder: (context)=> HeartAttackUploader())),
                 child: SvgPicture.asset("assets/images/Vector (1).svg" , width: 27.w ,height: 31.h,)),
             title:  Text(
               "Assess Your Heart Attack Risk",
@@ -119,6 +141,7 @@ class Home extends StatelessWidget {
             ),
           ),
 
+*/
 
         ],
       ),

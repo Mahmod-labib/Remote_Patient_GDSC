@@ -7,7 +7,7 @@ class UserData {
 
   Map<String, dynamic> toJson() {
     return {
-      'name': fullName,
+      'fullName': fullName,
       'email': email,
       'password':password,
     };

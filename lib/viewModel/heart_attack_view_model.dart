@@ -1,6 +1,7 @@
 // heart_attack_view_model.dart
 
 import 'package:flutter/material.dart';
+import 'package:gdcs_hackathon/model/repo/heart_attack_repo.dart';
 
 import '../model/heart_attack_check.dart';
 
@@ -35,5 +36,9 @@ class HeartAttackCheckViewModel {
       numberOfMajorVessels: numberOfMajorVesselsController.text,
       thalValue: thalValueController.text,
     );
+
   }
+
+
+
 }
